@@ -1,0 +1,60 @@
+.task-table {
+    max-width: 60vw;
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+
+.task-heading {
+    background-color: var(--gray-blue);
+    padding: 0.6vw 1.5vw;
+    font-size: 1.2em;
+}
+
+.task-time {
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 0.6vw 1.5vw;
+}
+
+.task-row:nth-child(even) .task-time {
+    background-color: var(--gray-blue);
+}
+
+.task-row:nth-child(odd) .task-time {
+    background-color: var(--gray-blue-light);
+}
+
+.task-body {
+    background-color: var(--blue);
+    padding: 4px 30px;
+    font-size: 1em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.2em 0.2em 0;
+}
+
+.task-title,
+.task-desc {
+    margin: 10px;
+}
+
+.task-desc {
+    max-width: 12em;
+}
+
+.task-button {
+    color: var(--white);
+    background-color: var(--red);
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: 600;
+    padding: 20px 40px;
+    border: none;
+}
+
+.task-button:hover {
+    cursor: pointer;
+    background-color: var(--red-dark);
+}

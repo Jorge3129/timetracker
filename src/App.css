@@ -1,38 +1,138 @@
+:root {
+  --blue: #5e91c4;
+  --white: #fff;
+  --red: #de7871;
+  --red-dark: #ad5953;
+  --yellow: #fff34f;
+  --gray-blue: #d0dff7;
+  --gray-blue-light: #edf4ff;
+}
+
+* {
+  margin: 0;
+}
+
+.body {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/** MENU **/
+
+.header {
+  border-bottom: 2px solid var(--white);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-title {
+  color: #fff;
+  text-decoration: none;
+  padding: 0;
+  margin: 16px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.menu-main {
+  background-color: var(--blue);
+  background: var(--blue);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+.menu-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.menu-item {
+  list-style-type: none;
+  padding: 10px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.menu-link {
+  font-size: 1.2em;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.menu-link:hover {
+    color: var(--yellow);
+}
+
+/** PAGE CONTAINER **/
+
+.page-container {
+  margin-left: 160px;
+  transition: all 0.5s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header-title {
+  background-color: var(--gray-blue);
+  height: 60px;
+  line-height: 60px;
+}
+
+.content {
+  padding: 0;
+  min-height: calc(100vh - 60px);
+}
+
+@media (max-width: 700px){
+  .header-title {
+    font-size: 1.2em;
   }
-  to {
-    transform: rotate(360deg);
+
+  .menu-link {
+    font-size: 0.9em;
+  }
+}
+
+
+@media (max-width: 500px){
+  .page-container {
+    margin-left: 60px;
+  }
+
+  .menu-main {
+    width: 60px;
+    transition: all 1s ease;
+  }
+
+  .header-title {
+    font-size: 0.9em;
+  }
+
+  .menu-link {
+    font-size: 0.8em;
+  }
+
+  .task-heading,
+  .task-time {
+    padding: 0.3em 1.5em;
+  }
+
+  .task-heading {
+    font-size: 0.9em;
+  }
+
+  .task-time {
+    font-size: 0.6em;
+    font-weight: 600;
+  }
+
+  .task-body {
+    font-size: 0.6em;
   }
 }

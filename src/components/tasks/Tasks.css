@@ -6,14 +6,13 @@
 
 .task-heading {
     background-color: var(--gray-blue);
-    padding: 0.6vw 1.5vw;
     font-size: 1.2em;
 }
 
 .task-time {
     font-size: 1.1em;
     font-weight: 600;
-    padding: 0.6vw 1.5vw;
+    width: 12vw;
 }
 
 .task-row:nth-child(even) .task-time {
@@ -52,9 +51,31 @@
     font-weight: 600;
     padding: 20px 40px;
     border: none;
+    margin: 20px;
 }
 
 .task-button:hover {
     cursor: pointer;
     background-color: var(--red-dark);
+}
+
+
+.context-menu {
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 5px 0 5px 0;
+    width: 150px;
+    height: auto;
+    margin: 0;
+    /* use absolute positioning  */
+    position: absolute;
+    list-style: none;
+    box-shadow: 0 0 20px 0 #ccc;
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
+
+.context-menu-option:hover {
+    cursor: pointer;
 }

@@ -11,7 +11,7 @@ class TaskController {
                 }
             });
             const content = await response.json();
-            console.log(content);
+            //console.log(content);
             return content;
         } catch (e) {
             console.log(e)
@@ -19,10 +19,11 @@ class TaskController {
         }
     }
 
-    async getTasks(){
+    async getTasks() {
         const tasks = await this.getRawTasks();
         return tasks.map(task => (
-            {...task,
+            {
+                ...task,
                 start: dayjs(task.start),
                 end: dayjs(task.end),
                 desc: task.descr,
@@ -33,6 +34,7 @@ class TaskController {
 
     async postTask(task) {
         try {
+            alert('POST: ' + task.id)
             const response = await fetch('http://localhost:8000/tasks', {
                 method: 'POST',
                 headers: {
@@ -42,7 +44,7 @@ class TaskController {
                 body: JSON.stringify(task)
             });
             const content = await response.json();
-            console.log(content);
+            //console.log(content);
         } catch (e) {
             console.log(e)
         }
@@ -50,13 +52,29 @@ class TaskController {
 
     async deleteTask(id) {
         try {
+            const url = 'http://localhost:8000/tasks/' + id;
+            const response = await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            });
+            const content = await response.json();
+            console.log(content);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async deleteAll() {
+        try {
             const response = await fetch('http://localhost:8000/tasks', {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({id})
             });
             const content = await response.json();
             console.log(content);
@@ -66,23 +84,4 @@ class TaskController {
     }
 }
 
-export const controller = new TaskController();
-
-export function createTask(index, id) {
-    return {
-        id: id + 1,
-        title: `Task ${index + 1}`,
-        desc: 'Blblabla Blblabla Blblabla',
-        start: dayjs(),
-        end: dayjs(),
-        span: dayjs(),
-        color: ['#ff512e', '#ffd52e', '#afff2e', '#bdfffe'][index % 4]
-    }
-}
-
-export function addTaskSpan(task) {
-    const {start, end} = task;
-    return `${end.subtract(start.hour(), 'hour').format('HH')}-` +
-        `${end.subtract(start.minute(), 'minute').format('mm')}-` +
-        `${end.subtract(start.second(), 'second').format('ss')}`;
-}
+export default new TaskController();

@@ -4,6 +4,7 @@
   --red: #de7871;
   --red-dark: #ad5953;
   --yellow: #fff34f;
+  --gray-blue-dark: #b3caf5;
   --gray-blue: #d0dff7;
   --gray-blue-light: #edf4ff;
 }
@@ -79,7 +80,7 @@
 }
 
 .page-header-title {
-  background-color: var(--gray-blue);
+  background-color: var(--gray-blue-dark);
   height: 60px;
   line-height: 60px;
 }
@@ -87,6 +88,17 @@
 .content {
   padding: 0;
   min-height: calc(100vh - 60px);
+  margin: 20px;
+}
+
+.about {
+  margin: 30px 100px;
+}
+
+.about-paragraph {
+  font-size: 1.1em;
+  margin: 30px 0;
+  text-align: left;
 }
 
 @media (max-width: 700px){
@@ -116,23 +128,5 @@
 
   .menu-link {
     font-size: 0.8em;
-  }
-
-  .task-heading,
-  .task-time {
-    padding: 0.3em 1.5em;
-  }
-
-  .task-heading {
-    font-size: 0.9em;
-  }
-
-  .task-time {
-    font-size: 0.6em;
-    font-weight: 600;
-  }
-
-  .task-body {
-    font-size: 0.6em;
   }
 }

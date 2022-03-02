@@ -9,7 +9,6 @@ export function createTask(id) {
         end: dayjs(),
         span: dayjs(),
         color: ['#ff512e', '#ffd52e', '#afff2e', '#bdfffe'][(id - 1) % 4],
-        unsaved: false
     }
 }
 

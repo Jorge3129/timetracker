@@ -1,26 +1,24 @@
 import dayjs from "dayjs";
 
 class TaskController {
-    async getRawTasks() {
+    async getRawTasks(userID, date) {
         try {
-            const response = await fetch('http://localhost:8000/tasks', {
+            const response = await fetch(`http://localhost:8000/tasks/${userID}/${date.format('YYYY-MM-DD')}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             });
-            const content = await response.json();
-            //console.log(content);
-            return content;
+            return await response.json();
         } catch (e) {
             console.log(e)
             return e;
         }
     }
 
-    async getTasks() {
-        const tasks = await this.getRawTasks();
+    async getTasks(userID, date) {
+        const tasks = await this.getRawTasks(userID, date);
         return tasks.map(task => (
             {
                 ...task,
@@ -32,10 +30,9 @@ class TaskController {
         ));
     }
 
-    async postTask(task) {
+    async postTask(task, userID, date) {
         try {
-            alert('POST: ' + task.id)
-            const response = await fetch('http://localhost:8000/tasks', {
+            const response = await fetch(`http://localhost:8000/tasks/${userID}`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -50,9 +47,9 @@ class TaskController {
         }
     }
 
-    async deleteTask(id) {
+    async deleteTask(id, userID, date) {
         try {
-            const url = 'http://localhost:8000/tasks/' + id;
+            const url = `http://localhost:8000/tasks/${userID}/${date.format('YYYY-MM-DD')}/${id}`;
             const response = await fetch(url, {
                 method: 'DELETE',
                 headers: {
@@ -67,9 +64,25 @@ class TaskController {
         }
     }
 
-    async deleteAll() {
+    async deleteAll(userID, date) {
         try {
-            const response = await fetch('http://localhost:8000/tasks', {
+            const response = await fetch(`http://localhost:8000/tasks/${userID}/${date.format('YYYY-MM-DD')}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            });
+            const content = await response.json();
+            console.log(content);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async deleteAllDays(userID) {
+        try {
+            const response = await fetch('http://localhost:8000/tasks/'+ userID, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',

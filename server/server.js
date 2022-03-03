@@ -5,7 +5,8 @@ const cookie = require('cookie-parser')
 const session = require('express-session')
 const dbController = require('./dbController');
 const taskRouter = require('./routes/taskRouter');
-const authRouter = require('./routes/authRouter')
+const authRouter = require('./routes/authRouter');
+const activityRouter = require('./routes/activityRouter')
 const PORT = 8000;
 
 app.use(cors({
@@ -30,6 +31,8 @@ app.use(express.json());
 })();
 
 app.use('/tasks', taskRouter);
+app.use('/activities', activityRouter);
 app.use('/auth', authRouter);
+
 
 

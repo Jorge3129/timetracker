@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-class TaskController {
+class TaskAPI {
     async getRawTasks(userID, date) {
         try {
             const response = await fetch(`http://localhost:8000/tasks/${userID}/${date.format('YYYY-MM-DD')}`, {
@@ -97,4 +97,4 @@ class TaskController {
     }
 }
 
-export default new TaskController();
+export default new TaskAPI();

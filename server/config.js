@@ -7,4 +7,11 @@ const connection = mysql.createConnection({
     database: 'employee_system'
 });
 
+const countTasks =
+    `SELECT u.userID, u.username, COUNT(t.taskID)
+    FROM users u
+    INNER JOIN tasks t
+    ON u.userID = t.userID
+    GROUP BY t.userID;`
+
 module.exports = {connection};

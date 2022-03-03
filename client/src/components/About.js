@@ -1,9 +1,5 @@
-import Main from "./Main";
-
 const About = () => {
-  return (
-    <Main title="About">
-      <div className="about">
+  return ( <div className="about">
         <p className="about-paragraph">
 
         </p>
@@ -38,7 +34,6 @@ const About = () => {
           qui dolorem eum fugiat quo voluptas nulla pariatur?
         </p>
       </div>
-    </Main>
   );
 };
 

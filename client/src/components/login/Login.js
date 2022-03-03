@@ -1,6 +1,8 @@
 import {BACKEND_PORT} from "../../config";
 import {useState} from "react";
 import {useNavigate} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {selectUser, setUser} from "../../redux/userSlice";
 
 async function post(user) {
     try {
@@ -19,19 +21,21 @@ async function post(user) {
     }
 }
 
-const Login = ({loggedIn, setLoggedIn}) => {
+const Login = () => {
 
-    const [user, setUser] = useState('');
+    const dispatch = useDispatch();
+
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const res = await post({username: user, password});
+        const res = await post({username: username, password});
         if (!res.success) return;
         const userID = res.results[0]['userID'];
         localStorage.setItem('userID',userID)
-        setLoggedIn(userID);
+        dispatch(setUser(userID));
         navigate('/');
     }
 
@@ -42,7 +46,7 @@ const Login = ({loggedIn, setLoggedIn}) => {
                 <label>
                     <p>Username</p>
                     <input onChange={(e) => {
-                        setUser(e.target.value)
+                        setUsername(e.target.value)
                     }} type="text"/>
                 </label>
                 <label>

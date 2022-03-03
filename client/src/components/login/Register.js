@@ -1,6 +1,8 @@
 import {BACKEND_PORT} from "../../config";
 import {useState} from "react";
 import {useNavigate} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {selectUser, setUser} from "../../redux/userSlice";
 
 async function post(user) {
     try {
@@ -20,16 +22,19 @@ async function post(user) {
     }
 }
 
-const Register = ({setLoggedIn}) => {
+const Register = () => {
 
-    const [user, setUser] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    const user = useSelector(selectUser);
+    const dispatch = useDispatch();
+
     function handleSubmit(e) {
         e.preventDefault();
-        post({username: user, password});
-        setLoggedIn(0);
+        post({username, password});
+        dispatch(setUser(0))
         localStorage.clear();
         navigate('/login');
     }
@@ -41,7 +46,7 @@ const Register = ({setLoggedIn}) => {
                 <label>
                     <p>Username</p>
                     <input onChange={(e) => {
-                        setUser(e.target.value)
+                        setUsername(e.target.value)
                     }} type="text"/>
                 </label>
                 <label>

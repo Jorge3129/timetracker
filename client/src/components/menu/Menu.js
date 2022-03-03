@@ -1,15 +1,17 @@
 import Header from "./Header"
 import MenuOption from "./MenuOption"
 import './Menu.css'
-import {click} from "@testing-library/user-event/dist/click";
 import {useNavigate} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {selectUser, setUser} from "../../redux/userSlice";
 
-const Menu = ({setLoggedIn}) => {
+const Menu = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     function handleLogout(){
         localStorage.clear();
-        setLoggedIn(0);
+        dispatch(setUser(0));
         navigate('/');
     }
 

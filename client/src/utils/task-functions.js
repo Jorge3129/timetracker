@@ -7,8 +7,8 @@ export function createTask(id) {
         desc: 'Blblabla',
         start: dayjs(),
         end: dayjs(),
-        span: dayjs(),
         color: ['#ff512e', '#ffd52e', '#afff2e', '#bdfffe'][(id - 1) % 4],
+        running: true
     }
 }
 

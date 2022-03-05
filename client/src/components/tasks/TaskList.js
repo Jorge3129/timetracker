@@ -142,7 +142,7 @@ const TaskList = () => {
     return (
         <>
             <main className={"task-main"}>
-                <h1>XYN</h1>
+                <h3 className={'date-header'}>{date ? date.format('ddd, DD.MM.YYYY') : ''}</h3>
                 <ul className={"day-list"}>
                     {setupDays().map(date =>
                         <li className={"day-li"} key={`day-${date.format()}`}>

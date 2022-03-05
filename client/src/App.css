@@ -67,4 +67,8 @@
   .page-container {
     margin-left: 60px;
   }
+
+  .page-header-title {
+    width: calc(100vw - 60px);
+  }
 }

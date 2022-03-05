@@ -10,18 +10,37 @@
 
 .activity-aside {
     flex: 1;
+    background-color: var(--blue);
 }
 
 .activity-list {
-    background-color: var(--blue);
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    margin: 0;
     padding: 5px;
+    background-color: var(--gray-blue);
 }
 
-.activity {
-    margin: 20px;
+.activity-item {
+    width: 90%;
+}
+
+.activity-button {
+    width: 100%;
+}
+
+.activity-title {
+    text-align: center;
+    width: 100%;
+}
+
+.activity-button:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 800px){
+    .content {
+        flex-direction: column;
+    }
 }

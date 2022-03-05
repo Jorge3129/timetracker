@@ -107,7 +107,18 @@
     cursor: pointer;
 }
 
-@media (max-width: 500px){
+.date-header {
+    margin: 20px 0;
+}
+
+@media (max-width: 900px) {
+    .day-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
     .task-heading,
     .task-time {
         padding: 0.3em 1.5em;

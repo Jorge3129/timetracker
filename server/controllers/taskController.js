@@ -20,12 +20,12 @@ class TaskController {
     }
 
     async insertTask(req, res) {
-        const {id, title, desc, start, end, span, color} = req.body;
-        const {userID, date} = req.params;
+        const {id, title, desc, start, end, color, running} = req.body;
+        const {userID} = req.params;
         await connection.query(
-            `INSERT INTO tasks(taskId, title, descr, start, end, span, color, userID)
+            `INSERT INTO tasks(taskId, title, descr, start, end, color, userID, running)
                 VALUES (?,?,?,?,?,?,?,?)`,
-            [id, title, desc, formatDate(start), formatDate(end), span, color, userID],
+            [id, title, desc, formatDate(start), formatDate(end), color, userID, running],
             (err, result) => {
                 if (err) return console.log(err);
                 console.log(result);

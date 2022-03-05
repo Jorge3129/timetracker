@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import activityAPI from '../utils/activityAPI'
+import taskAPI from '../utils/taskAPI'
 import {createFetchDataThunk} from "./fetchDataThunk";
 
 const initialState = {
@@ -8,10 +8,13 @@ const initialState = {
     error: false,
 };
 
-export const activitySlice = createSlice({
-    name: 'activities',
+export const taskSlice = createSlice({
+    name: 'tasks',
     initialState: initialState,
     reducers: {
+        addTask: (state, action) => {
+            return {data: [...state.data, action.payload], ...state};
+        },
         startLoading: (state) => {
             state.loading = true;
         },
@@ -27,10 +30,10 @@ export const activitySlice = createSlice({
     },
 })
 
-export const selectActivities = (state) => state.activities;
+export const selectTasks = (state) => state.tasks;
 
-export const getActivitiesThunk = createFetchDataThunk('activities/get', activitySlice.actions, activityAPI.get);
+export const getActivitiesThunk = createFetchDataThunk('tasks/get', taskSlice.actions, taskAPI.getTasks);
 
-export const {startLoading, dataFetched, dataFetchedWithError} = activitySlice.actions
+export const {startLoading, dataFetched, dataFetchedWithError} = taskSlice.actions
 
-export default activitySlice.reducer
+export default taskSlice.reducer
